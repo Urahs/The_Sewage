@@ -6,10 +6,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (Rigidbody))]
     [RequireComponent(typeof (CapsuleCollider))]
+    
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        
         [Serializable]
         public class MovementSettings
+        
         {
             public float ForwardSpeed = 8.0f;   // Speed when walking forward
             public float BackwardSpeed = 4.0f;  // Speed when walking backwards
@@ -44,7 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+	            if (Input.GetKey(RunKey) && PlayerPrefs.GetInt("focusing") != 1)
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -81,7 +84,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
-
 
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
