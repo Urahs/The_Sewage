@@ -6,6 +6,10 @@ TagManager:
   tags:
   - wanderTarget
   - monster
+  - pickUpBullet
+  - pickUpGun
+  - cabinet
+  - AudioControlObject
   layers:
   - Default
   - TransparentFX

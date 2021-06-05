@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
     public ParticleSystem muzzleFlash;
     public Animator animator;
+    public LaunchProjectile launchProjectile;
+
+    public Text ammoText;
+    public Text currentText;
 
     void Start()
     {
@@ -14,6 +19,9 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+
+        ammoText.text = PlayerPrefs.GetInt("gunTotal").ToString();
+        currentText.text = PlayerPrefs.GetInt("gunCurrent").ToString();
 
         /* flag conditions:
             0 - idle
@@ -24,9 +32,13 @@ public class Gun : MonoBehaviour
         */ 
 
         //FIRE
-        if (Input.GetButtonDown("Fire1")){
-            Shoot();
-        }
+        /* if(PlayerPrefs.GetInt("gunCurrent") == 1){
+            if (Input.GetButtonDown("Fire1")){
+                PlayerPrefs.SetInt("gunCurrent", 0);
+                launchProjectile.FireBullet();
+                Shoot();
+            }
+        } */
 
 
         //FIRE
@@ -128,8 +140,7 @@ public class Gun : MonoBehaviour
 
     void Shoot(){
         animator.SetInteger("flag", 4);
-        muzzleFlash.Play();
-        
+        muzzleFlash.Play();  
     }
 
     bool Run(){
@@ -146,13 +157,25 @@ public class Gun : MonoBehaviour
         return false;
     }
     bool Reload(){
-        if(Input.GetKeyDown(KeyCode.R))
-            return true;
+        if(Input.GetKeyDown(KeyCode.R)){
+            if(PlayerPrefs.GetInt("gunTotal") > 0 && PlayerPrefs.GetInt("gunCurrent") != 1){
+                PlayerPrefs.SetInt("gunTotal", PlayerPrefs.GetInt("gunTotal")-1);
+                PlayerPrefs.SetInt("gunCurrent", 1);
+                return true;
+            }
+        }
         return false;
     }
     bool Fire(){
-        if (Input.GetButtonDown("Fire1"))
-            return true;
+        if (Input.GetButtonDown("Fire1")){
+            if (PlayerPrefs.GetInt("gunCurrent") == 1){
+                PlayerPrefs.SetInt("gunCurrent", 0);
+                launchProjectile.FireBullet();
+                Shoot();
+                return true;
+            }
+            
+        }
         return false;
     }
     

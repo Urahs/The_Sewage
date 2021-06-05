@@ -6,6 +6,7 @@ public class LaunchProjectile : MonoBehaviour
 {
     [SerializeField] public GameObject projectile;
     [SerializeField] public float launchVelocity = 700f;
+    [SerializeField] public float launchVelocityUp = -100;
     
 
     // Start is called before the first frame update
@@ -17,11 +18,11 @@ public class LaunchProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-            bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocity, -150));
-        }
+    }
+
+    public void FireBullet() {
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocity, -launchVelocityUp));
     }
 
 }

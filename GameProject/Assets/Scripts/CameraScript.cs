@@ -100,7 +100,7 @@ public class CameraScript : MonoBehaviour
     */
     void Reload(){
         if(Input.GetKeyDown(KeyCode.R))
-            if(ammo>0){
+            if(ammo>0 && current!=1){
                 ammo--;
                 current++;
                 animator.SetInteger("flag", 4);
