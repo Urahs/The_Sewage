@@ -11,10 +11,11 @@ public class CameraScript : MonoBehaviour
     public Animator animator;
     public Animator animatorLight;
     public TakePhoto takePhoto;
+    public ScreenShotCamera screenShotCamera;
     public bool focus;
     public int ammo = 2;            // >>>>>>>>>>>>>>>>> şuraya el at sonra
     int current = 1;
-    float range = 100f;
+    float range = 10000f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,14 +52,17 @@ public class CameraScript : MonoBehaviour
                     focus = false;
                     
                     current--;
-                    if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out raycastHit, range))
-                        if(raycastHit.transform.name == "Monster"){
+                    if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out raycastHit, range)){
+                        Debug.Log(raycastHit.transform.name);
+                        if(raycastHit.transform.tag == "monster"){
+                            screenShotCamera.validPhoto = true;
                             takePhoto.CallTakeSnapShot();
-                            takePhoto.temp = true;
                             takePhoto.ResetBars();
                         }
-                        else
-                            takePhoto.temp = false;
+                        else{
+                            screenShotCamera.validPhoto = false;
+                        }
+                    }
                     return;
                 }
             }

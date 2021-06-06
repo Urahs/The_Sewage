@@ -6,6 +6,10 @@ using UnityEngine;
 public class ScreenShotCamera : MonoBehaviour
 {
     Camera snapCam;
+    public TakePhoto takePhoto;
+
+    public int photoCounter=0;
+    public bool validPhoto;
 
     int resWidth = 256;
     int resHeight = 256;
@@ -45,8 +49,15 @@ public class ScreenShotCamera : MonoBehaviour
 
 
     string SnapShotName(){
-        //return string.Format("{0}/Snapshots/snap_{1}x{2}_{3}.png", Application.dataPath, resWidth, resHeight,  System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
-        return string.Format("{0}/Snapshots/resim00.png", Application.dataPath);
+        if(validPhoto){
+            string pngName = "photo" + photoCounter.ToString() + ".png";
+            Debug.Log(photoCounter);
+            takePhoto.photoNum[photoCounter]++;
+            photoCounter++;
+            return string.Format("{0}/Snapshots/" + pngName, Application.dataPath);
+        }
+            
+        return string.Format("{0}/Snapshots/InvalidPhoto.png", Application.dataPath);
     }
 
 

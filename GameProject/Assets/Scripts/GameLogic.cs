@@ -15,6 +15,9 @@ public class GameLogic : MonoBehaviour
     
     public float pickUpRange = 38f;
 
+    void Awake(){
+        PlayerPrefs.SetInt("monsterDead", -1);
+    }
 
     // Start is called before the first frame update
     void Start()

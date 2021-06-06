@@ -67,7 +67,11 @@ public class MonsterNavMeshControl : MonoBehaviour
 
 
         if(health <= 0){
+            PlayerPrefs.SetInt("monsterDead", 1);
             animator.Play("death");
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeAll;
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
 
 
@@ -127,8 +131,7 @@ public class MonsterNavMeshControl : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other) {
-
+    private void OnCollisionEnter(Collision other) {
         if(other.transform.tag == "Bullet"){   
             other.transform.tag = "Untagged";
             health--;
