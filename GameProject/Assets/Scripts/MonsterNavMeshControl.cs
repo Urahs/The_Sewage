@@ -10,10 +10,12 @@ public class MonsterNavMeshControl : MonoBehaviour
     private float wanderTimeCounter;
     private Animator animator;
     private bool killVictim = false;
+    
 
     //PUBLIC GLOBAL VARIABLES
     public GameObject victimTarget;
     public float runSpeed = 100;
+    public int health = 1;
 
     public float walkSpeed = 50;
     public float maxAttackDistance;
@@ -39,13 +41,13 @@ public class MonsterNavMeshControl : MonoBehaviour
         //SET ANIMATION SPEED
         animator.SetFloat("walkAnimationSpeed", walkAnimationSpeed);
         animator.SetFloat("runAnimationSpeed", runAnimationSpeed);
-        if (killVictim)
+        if (killVictim && health>0)
         {
             //animator.Play("bite&up");
             //animator.Play("attack");
             Destroy(victimTarget);
         }
-        else
+        else if(health>0)
         {
             wanderTimeCounter += Time.deltaTime;
             float distance = distanceFromVictim();
@@ -61,6 +63,14 @@ public class MonsterNavMeshControl : MonoBehaviour
                 attack((maxAttackDistance - distance) / maxAttackDistance);
             }
         }
+
+
+
+        if(health <= 0){
+            animator.Play("death");
+        }
+
+
     }
 
     private void attack(float howClose)
@@ -114,4 +124,16 @@ public class MonsterNavMeshControl : MonoBehaviour
     {
         return Vector3.Distance(transform.position, victimTarget.transform.position);
     }
+
+
+
+    private void OnTriggerEnter(Collider other) {
+
+        if(other.transform.tag == "Bullet"){   
+            other.transform.tag = "Untagged";
+            health--;
+        }
+    }
+
+
 }

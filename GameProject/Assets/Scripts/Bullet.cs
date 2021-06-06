@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float destryoTime = 3f;
+    [SerializeField] float destryoTime = 10f;
     
     void Update()
     {
-        
         Destroy(gameObject, destryoTime);
-            
     }
+
+
 }

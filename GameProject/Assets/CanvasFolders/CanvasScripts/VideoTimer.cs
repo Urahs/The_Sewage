@@ -6,6 +6,7 @@ using UnityEngine;
 public class VideoTimer : MonoBehaviour
 {
     private VideoPlayer videoPlayer;
+    public float waitTime = 3f;
     private void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
@@ -14,7 +15,7 @@ public class VideoTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (videoPlayer.time > 7)
+        if (videoPlayer.time > waitTime)
         {
             Destroy(gameObject);
         }
