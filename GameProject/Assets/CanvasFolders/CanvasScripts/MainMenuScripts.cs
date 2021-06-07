@@ -43,7 +43,9 @@ public class MainMenuScripts : MonoBehaviour
 
         //monster
         monster.GetComponent<MonsterNavMeshControl>().health = 3;
-        PlayerPrefs.SetInt("monsterDead", 0);
+        monster.GetComponent<BoxCollider>().enabled = true;
+        monster.GetComponent<CapsuleCollider>().enabled = true;
+        PlayerPrefs.SetInt("monsterDead", -1);
 
         //player
         PlayerPrefs.SetInt("gunTotal", 2);

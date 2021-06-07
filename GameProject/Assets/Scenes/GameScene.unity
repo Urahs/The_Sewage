@@ -848,6 +848,7 @@ MonoBehaviour:
   defaultCanvas: {fileID: 1540459846}
   gunCamCanvas: {fileID: 351013383}
   text: {fileID: 5814788012951297142}
+  title: {fileID: 5814788012720848671}
 --- !u!1 &351013383
 GameObject:
   m_ObjectHideFlags: 0
@@ -9628,7 +9629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9636,11 +9637,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5033f0759a9f41449898b647bc1c32e6, type: 3}
-    m_FontSize: 100
+    m_FontSize: 130
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -9679,15 +9680,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5033f0759a9f41449898b647bc1c32e6, type: 3}
-    m_FontSize: 100
+    m_Font: {fileID: 12800000, guid: 29e94809fedaf7f47939b5c00700fbc7, type: 3}
+    m_FontSize: 70
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -9713,10 +9714,10 @@ RectTransform:
   m_Father: {fileID: 5814788013863411156}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.171}
+  m_AnchorMin: {x: 0, y: 0.115}
   m_AnchorMax: {x: 1, y: 0.48666456}
-  m_AnchoredPosition: {x: -0.000061035156, y: 2.2999878}
-  m_SizeDelta: {x: 1.4013672, y: -5.399536}
+  m_AnchoredPosition: {x: -0.35028076, y: 0.8000488}
+  m_SizeDelta: {x: 0.70080566, y: -2.4135742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5814788012951297929
 CanvasRenderer:
@@ -10334,6 +10335,21 @@ PrefabInstance:
       propertyPath: victimTarget
       value: 
       objectReference: {fileID: 1295622735025947616}
+    - target: {fileID: 8808715566663901185, guid: 58c87e0fe03cfc74dadc1d9375fa42bb,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808715566663901185, guid: 58c87e0fe03cfc74dadc1d9375fa42bb,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808715566663901185, guid: 58c87e0fe03cfc74dadc1d9375fa42bb,
+        type: 3}
+      propertyPath: runSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c87e0fe03cfc74dadc1d9375fa42bb, type: 3}
 --- !u!1 &8171080887462891534
