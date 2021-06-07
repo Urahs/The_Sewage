@@ -51,15 +51,12 @@ public class SwitchWeapon : MonoBehaviour
         //int i=0;
         
         GameObject temp = null;
-        GameObject inTemp = null;
-        GameObject outTemp = null;
 
         if(selected == 0)   temp = lamp;
         else if(selected == 1)   temp = cam;
         else if(selected == 2)   temp = gun;
-        else if(selected == 3) {
-              temp = gunLamp;
-        }
+        else if(selected == 3)   temp = gunLamp;
+        
 
 
 
@@ -76,8 +73,7 @@ public class SwitchWeapon : MonoBehaviour
             StartCoroutine(DestroyObj(gun, temp));
         }
         else if(prev==3){
-            animator.Play("gunBack");
-            animator.Play("lampBack");
+            animator.Play("gunLampBack");
             StartCoroutine(DestroyObj(gun, temp));
         }
 
@@ -109,9 +105,8 @@ public class SwitchWeapon : MonoBehaviour
         else if(selected == 2){
             animator.Play("gunForward");
         }
-        else if(selected == 2){
-            animator.Play("lampForward");
-            animator.Play("gunForward");
+        else if(selected == 3){
+            animator.Play("gunLampForward");
         }
     }
 

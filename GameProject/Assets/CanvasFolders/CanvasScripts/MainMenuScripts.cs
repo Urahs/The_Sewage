@@ -48,7 +48,7 @@ public class MainMenuScripts : MonoBehaviour
         PlayerPrefs.SetInt("monsterDead", -1);
 
         //player
-        PlayerPrefs.SetInt("gunTotal", 2);
+        PlayerPrefs.SetInt("gunTotal", 20);
         PlayerPrefs.SetInt("gunCurrent", 0);
         cameraScript.ammo = 2;
         cameraScript.current = 1;
