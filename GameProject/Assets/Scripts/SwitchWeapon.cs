@@ -16,6 +16,12 @@ public class SwitchWeapon : MonoBehaviour
 
     void Awake()
     {
+        Initial();
+    }
+
+    public void Initial(){
+        selected = 0;
+        lockGun = false;
         lamp.SetActive(true);
         gun.SetActive(false);
         cam.SetActive(false);

@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour
     public ScreenShotCamera screenShotCamera;
     public bool focus;
     public int ammo = 2;            // >>>>>>>>>>>>>>>>> şuraya el at sonra
-    int current = 1;
+    public int current = 1;
     float range = 10000f;
 
     // Start is called before the first frame update

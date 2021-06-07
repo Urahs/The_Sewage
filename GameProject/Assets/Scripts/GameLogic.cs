@@ -29,7 +29,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine(fpsCam.transform.position, fpsCam.transform.position+fpsCam.transform.forward*pickUpRange);
+        //Debug.DrawLine(fpsCam.transform.position, fpsCam.transform.position+fpsCam.transform.forward*pickUpRange);
         UpdateCanvas();
         PickUpObject();
     }

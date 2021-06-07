@@ -28,6 +28,9 @@ public class FinishTrigger : MonoBehaviour
                 Destroy_Create();
             }
             else if(PlayerPrefs.GetInt("monsterDead") == 1){
+                text.text = "\tBrave Journalist Killed the Sewage Monster!\n"+
+                "John went into the old sewage to make news about the mysterious monster, but things didn't turn out the way he expected."+
+                 " After all, he had to kill the sewage monster. The killed monster was photographed by our photojournalists.";
                 Destroy_Create();
             }
             
@@ -52,6 +55,8 @@ public class FinishTrigger : MonoBehaviour
     }
 
     void Destroy_Create(){
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         player.GetComponent<TakePhoto>().CallmePls();
         player.SetActive(false);
         endGame.SetActive(true);

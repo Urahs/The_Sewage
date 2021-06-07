@@ -12,6 +12,18 @@ public class MainMenuScripts : MonoBehaviour
     public GameObject MainMenuCanvas;
     public GameObject pauseMenu;
     public GameObject infoCanvas;
+    public GameObject guncamCanvas;
+    public CanvasController canvasController;
+    public CameraScript cameraScript;
+    public ScreenShotCamera screenShotCamera;
+    public TakePhoto takePhoto;
+    public SwitchWeapon switchWeapon;
+
+
+    Vector3 pos;
+    Quaternion rot = new Quaternion();
+
+
 
 
     // Start is called before the first frame update
@@ -27,8 +39,41 @@ public class MainMenuScripts : MonoBehaviour
     }
 
     public void StartGame(){
+        //RESET OPERATIONS
+
+        //monster
+        monster.GetComponent<MonsterNavMeshControl>().health = 3;
+        PlayerPrefs.SetInt("monsterDead", 0);
+
+        //player
+        PlayerPrefs.SetInt("gunTotal", 2);
+        PlayerPrefs.SetInt("gunCurrent", 0);
+        cameraScript.ammo = 2;
+        cameraScript.current = 1;
+        screenShotCamera.photoCounter = 0;
+        takePhoto.photoNum[0] = -1;
+        takePhoto.photoNum[1] = -1;
+        takePhoto.photoNum[2] = -1;
+        switchWeapon.Initial();
+
+
+        canvasController.ActivePlayerCanvas();
         player.SetActive(true);
+        
+        rot = Quaternion.Euler(0f, -43.054f, 0f);  
+        player.transform.rotation = rot;
+        player.transform.rotation = rot;
+
+        player.transform.position = new Vector3(599.9041f, -66.40546f, -597.6862f);
+        
+        
+        
+
+        pos = new Vector3(-44.7f, -78f, -48.2f);
+        monster.transform.position = pos;
         monster.SetActive(true);
+        
+        guncamCanvas.SetActive(true);
         defaultCanvas.SetActive(true);
         MainMenuCanvas.SetActive(false);
     }

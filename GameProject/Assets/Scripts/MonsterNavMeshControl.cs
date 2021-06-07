@@ -10,6 +10,13 @@ public class MonsterNavMeshControl : MonoBehaviour
     private float wanderTimeCounter;
     private Animator animator;
     private bool killVictim = false;
+
+    public GameObject PlayerCanvas;
+    public GameObject MainMenuCanvas;
+    public GameObject scaryVideo;
+    public CanvasController canvasController;
+
+    
     
 
     //PUBLIC GLOBAL VARIABLES
@@ -28,8 +35,12 @@ public class MonsterNavMeshControl : MonoBehaviour
     [Range(0.00f, 1f)]
     public float runAnimationSpeed = 0.5f;
 
+
+
+
     void Start()
     {
+
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         wanderTimeCounter = wanderTime;
@@ -45,7 +56,16 @@ public class MonsterNavMeshControl : MonoBehaviour
         {
             //animator.Play("bite&up");
             //animator.Play("attack");
-            Destroy(victimTarget);
+
+            
+
+            PlayerCanvas.SetActive(false);
+            victimTarget.SetActive(false);
+            canvasController.PlayScaryVideo();
+            killVictim = false;
+            gameObject.SetActive(false);
+            
+            
         }
         else if(health>0)
         {
@@ -72,6 +92,7 @@ public class MonsterNavMeshControl : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeAll;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
 
