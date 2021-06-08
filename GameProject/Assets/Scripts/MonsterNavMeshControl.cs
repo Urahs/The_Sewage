@@ -16,6 +16,8 @@ public class MonsterNavMeshControl : MonoBehaviour
     public GameObject scaryVideo;
     public CanvasController canvasController;
 
+    public GameLogic gameLogic;
+
     
     
 
@@ -58,7 +60,8 @@ public class MonsterNavMeshControl : MonoBehaviour
             //animator.Play("attack");
 
             
-
+            gameLogic.reloadLevel = true;
+            PlayerPrefs.SetInt("restartScene", PlayerPrefs.GetInt("restartScene")+1);
             PlayerCanvas.SetActive(false);
             victimTarget.SetActive(false);
             canvasController.PlayScaryVideo();
@@ -92,7 +95,6 @@ public class MonsterNavMeshControl : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeAll;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
-            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
 

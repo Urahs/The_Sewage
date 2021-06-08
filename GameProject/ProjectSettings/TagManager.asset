@@ -11,6 +11,7 @@ TagManager:
   - cabinet
   - AudioControlObject
   - Bullet
+  - pickUpFilm
   layers:
   - Default
   - TransparentFX

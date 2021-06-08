@@ -7,6 +7,7 @@ public class FinishTrigger : MonoBehaviour
 {
     public TakePhoto takePhoto;
     public GameObject endGame, player, defaultCanvas, gunCamCanvas;
+    public GameLogic gameLogic;
 
     
     
@@ -53,6 +54,9 @@ public class FinishTrigger : MonoBehaviour
     }
 
     void Destroy_Create(){
+
+        gameLogic.reloadLevel = true;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         player.GetComponent<TakePhoto>().CallmePls();

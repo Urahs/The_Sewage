@@ -5,6 +5,13 @@ using UnityEngine;
 public class IntroduceTrigger : MonoBehaviour
 {
     public GameObject infoCanvas;
+    
+
+    void Start(){
+        if(PlayerPrefs.GetInt("restartScene") != -1){
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class CanvasController : MonoBehaviour
@@ -10,6 +11,7 @@ public class CanvasController : MonoBehaviour
     public GameObject MainCanvas;
     public GameObject playerCanvas;
     public GameObject endGame;
+    public GameLogic gameLogic;
 
 
     // Start is called before the first frame update
@@ -35,12 +37,21 @@ public class CanvasController : MonoBehaviour
         Jumpscare.SetActive(false);
         endGame.SetActive(false);
         MainCanvas.SetActive(true);
+
+        if(gameLogic.reloadLevel){
+            gameLogic.reloadLevel = false;
+            SceneManager.LoadScene("GameScene");
+        }
     }
 
 
     public void ActivePlayerCanvas(){
         playerCanvas.SetActive(true);
     }
+
+    /* void RestartLevel(){
+        SceneManager.LoadScene("GameScene");
+    } */
 
     
 

@@ -11,11 +11,14 @@ public class GameLogic : MonoBehaviour
     public Canvas canvasCam;
     public SwitchWeapon switchWeapon;
     public Camera fpsCam;
-    CameraScript cameraScript;
+    public CameraScript cameraScript;
     
+    public bool reloadLevel;
+
     public float pickUpRange = 38f;
 
     void Awake(){
+        reloadLevel = false;
         PlayerPrefs.SetInt("monsterDead", -1);
     }
 

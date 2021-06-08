@@ -18,6 +18,7 @@ public class MainMenuScripts : MonoBehaviour
     public ScreenShotCamera screenShotCamera;
     public TakePhoto takePhoto;
     public SwitchWeapon switchWeapon;
+    
 
 
     Vector3 pos;
@@ -43,7 +44,6 @@ public class MainMenuScripts : MonoBehaviour
 
         //monster
         monster.GetComponent<MonsterNavMeshControl>().health = 3;
-        monster.GetComponent<BoxCollider>().enabled = true;
         monster.GetComponent<CapsuleCollider>().enabled = true;
         PlayerPrefs.SetInt("monsterDead", -1);
 
@@ -78,6 +78,7 @@ public class MainMenuScripts : MonoBehaviour
         guncamCanvas.SetActive(true);
         defaultCanvas.SetActive(true);
         MainMenuCanvas.SetActive(false);
+        
     }
 
     public void Resume(){
@@ -110,5 +111,7 @@ public class MainMenuScripts : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    
 
 }

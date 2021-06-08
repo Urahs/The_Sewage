@@ -74,7 +74,7 @@ public class SwitchWeapon : MonoBehaviour
         }
         else if(prev==3){
             animator.Play("gunLampBack");
-            StartCoroutine(DestroyObj(gun, temp));
+            StartCoroutine(DestroyObj(gunLamp, temp));
         }
 
 
