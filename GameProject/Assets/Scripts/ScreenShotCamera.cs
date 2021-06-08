@@ -11,6 +11,8 @@ public class ScreenShotCamera : MonoBehaviour
     public int photoCounter=0;
     public bool validPhoto;
 
+    
+
     int resWidth = 256;
     int resHeight = 256;
 
@@ -41,7 +43,8 @@ public class ScreenShotCamera : MonoBehaviour
             string filename = SnapShotName();
             System.IO.File.WriteAllBytes(filename, bytes);
             //UnityEditor.AssetDatabase.Refresh();
-            UnityEditor.AssetDatabase.ImportAsset(filename);
+            //Resources.Load<Texture2D>(filename);
+            //UnityEditor.AssetDatabase.ImportAsset(filename);
             Debug.Log("Foto taken!");
             snapCam.gameObject.SetActive(false);
         }
@@ -54,10 +57,10 @@ public class ScreenShotCamera : MonoBehaviour
             Debug.Log(photoCounter);
             takePhoto.photoNum[photoCounter]++;
             photoCounter++;
-            return string.Format("{0}/Snapshots/" + pngName, Application.dataPath);
+            return string.Format("{0}/Resources/" + pngName, Application.dataPath);
         }
             
-        return string.Format("{0}/Snapshots/InvalidPhoto.png", Application.dataPath);
+        return string.Format("{0}/Resources/InvalidPhoto.png", Application.dataPath);
     }
 
 

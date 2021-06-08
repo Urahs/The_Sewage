@@ -97,6 +97,8 @@ public class MonsterNavMeshControl : MonoBehaviour
         if(health <= 0){
             PlayerPrefs.SetInt("monsterDead", 1);
             animator.Play("death");
+            audiosController.StopAudios(6);
+            audiosController.StopAudios(7);
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeAll;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;

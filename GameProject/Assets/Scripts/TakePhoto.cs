@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +8,7 @@ public class TakePhoto : MonoBehaviour
 {
     public ScreenShotCamera snapCam;
     
-
-    TextureImporter importer;
+    public Text photoText;
     public RawImage[] rawImages;
     public int[] photoNum;
     
@@ -35,6 +34,20 @@ public class TakePhoto : MonoBehaviour
             //snapCam.CallTakeSnapShot();               // take photo
             Invoke("CallmePls", 2.0f);                  // upload photo
         }
+
+        if(photoNum[2] == 0){
+            photoText.text = "3";
+        }
+        else if(photoNum[1] == 0){
+            photoText.text = "2";
+        }
+        else if(photoNum[0] == 0){
+            photoText.text = "1";
+        }
+        else{
+            photoText.text = "0";
+        }
+        
 
 
 
@@ -70,14 +83,13 @@ public class TakePhoto : MonoBehaviour
 
 
     public void CallmePls(){
-        
-        UnityEditor.AssetDatabase.Refresh();
+       
 
         string pngFileName;
 
         for(int i=0; i<3; i++){
             if(photoNum[i] == 0){
-                pngFileName = "Assets/Snapshots/photo" + i.ToString() + ".png";
+                pngFileName = Application.dataPath + "/Resources/photo" + i.ToString() + ".png";
             }
             else if(PlayerPrefs.GetInt("monsterDead") == 1){
                 pngFileName = "Assets/Snapshots/dead" + i.ToString() + ".png";
@@ -85,8 +97,17 @@ public class TakePhoto : MonoBehaviour
             else{
                 pngFileName = "Assets/Snapshots/DefaultMonster.png";
             }
+            Texture2D tex = null;
+            byte[] fileData;
 
-            rawImages[i].texture = (Texture2D)AssetDatabase.LoadAssetAtPath(pngFileName, typeof(Texture2D));
+            if (File.Exists(pngFileName))
+            {
+                fileData = File.ReadAllBytes(pngFileName);
+                tex = new Texture2D(2, 2);
+                tex.LoadImage(fileData);
+                
+            }
+            rawImages[i].texture = tex;
         }
 
 

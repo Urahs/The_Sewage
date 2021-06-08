@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudiosController : MonoBehaviour
 {
     
     private AudioSource[] audios;
+    
 
     void Awake(){
         audios = GetComponents<AudioSource>();
@@ -29,6 +31,18 @@ public class AudiosController : MonoBehaviour
         audios[soundId].Pause();
     }
 
+
+    public void ChangeVolume(Slider slider){
+        for(int i=0; i<audios.Length; i++){
+            audios[i].volume = slider.value;
+        }
+    }
+
+    public void ShutDown(){
+        for(int i=0; i<audios.Length; i++){
+            audios[i].Stop();
+        }
+    }
 }
 
 /* 

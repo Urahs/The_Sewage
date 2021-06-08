@@ -9,6 +9,10 @@ public class VideoTimer : MonoBehaviour
     public float waitTime = 3f;
     private void Awake()
     {
+        if(PlayerPrefs.GetInt("restartScene") != -1){
+            if(gameObject.transform.name == "Video Player Intro")
+                Destroy(gameObject);
+        }
         videoPlayer = GetComponent<VideoPlayer>();
     }
 

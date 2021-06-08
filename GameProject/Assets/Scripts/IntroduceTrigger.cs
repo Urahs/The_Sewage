@@ -5,7 +5,7 @@ using UnityEngine;
 public class IntroduceTrigger : MonoBehaviour
 {
     public GameObject infoCanvas;
-    
+    public AudiosController audiosController;
 
     void Start(){
         if(PlayerPrefs.GetInt("restartScene") != -1){
@@ -13,9 +13,12 @@ public class IntroduceTrigger : MonoBehaviour
         }
     }
 
+    
+
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
             
+            audiosController.ShutDown();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 

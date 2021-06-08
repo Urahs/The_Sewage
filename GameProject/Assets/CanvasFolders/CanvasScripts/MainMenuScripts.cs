@@ -10,7 +10,9 @@ public class MainMenuScripts : MonoBehaviour
     public GameObject monster;
     public GameObject defaultCanvas;
     public GameObject MainMenuCanvas;
+    public GameObject MainMenuCanvasChildren;
     public GameObject pauseMenu;
+    public GameObject helpCanvas;
     public GameObject infoCanvas;
     public GameObject guncamCanvas;
     public CanvasController canvasController;
@@ -18,13 +20,12 @@ public class MainMenuScripts : MonoBehaviour
     public ScreenShotCamera screenShotCamera;
     public TakePhoto takePhoto;
     public SwitchWeapon switchWeapon;
+    public GameObject optionsCanvas;
     
 
 
     Vector3 pos;
     Quaternion rot = new Quaternion();
-
-
 
 
     // Start is called before the first frame update
@@ -92,12 +93,26 @@ public class MainMenuScripts : MonoBehaviour
 
 
 
-    public void Options(){
-
-    }
+    
 
     public void Help(){
+        helpCanvas.SetActive(true);
+        MainMenuCanvasChildren.SetActive(false);
+    }
 
+    public void HelpBack(){
+        helpCanvas.SetActive(false);
+        MainMenuCanvasChildren.SetActive(true);
+    }
+
+    public void Options(){
+        optionsCanvas.SetActive(true);
+        MainMenuCanvasChildren.SetActive(false);
+    }
+
+    public void OptionsBack(){
+        optionsCanvas.SetActive(false);
+        MainMenuCanvasChildren.SetActive(true);
     }
 
     public void ExitGame(){
@@ -112,6 +127,8 @@ public class MainMenuScripts : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    
 
     
 
