@@ -43,12 +43,13 @@ public class MainMenuScripts : MonoBehaviour
         //RESET OPERATIONS
 
         //monster
+        monster.SetActive(true);
         monster.GetComponent<MonsterNavMeshControl>().health = 3;
         monster.GetComponent<CapsuleCollider>().enabled = true;
         PlayerPrefs.SetInt("monsterDead", -1);
 
         //player
-        PlayerPrefs.SetInt("gunTotal", 20);
+        PlayerPrefs.SetInt("gunTotal", 2);
         PlayerPrefs.SetInt("gunCurrent", 0);
         cameraScript.ammo = 2;
         cameraScript.current = 1;

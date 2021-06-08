@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public Animator animator;
     public LaunchProjectile launchProjectile;
+    public AudiosController audiosController;
 
     public Text ammoText;
     public Text currentText;
@@ -161,6 +162,7 @@ public class Gun : MonoBehaviour
             if(PlayerPrefs.GetInt("gunTotal") > 0 && PlayerPrefs.GetInt("gunCurrent") != 1){
                 PlayerPrefs.SetInt("gunTotal", PlayerPrefs.GetInt("gunTotal")-1);
                 PlayerPrefs.SetInt("gunCurrent", 1);
+                audiosController.playSound(4);
                 return true;
             }
         }
@@ -172,6 +174,7 @@ public class Gun : MonoBehaviour
                 PlayerPrefs.SetInt("gunCurrent", 0);
                 launchProjectile.FireBullet();
                 Shoot();
+                audiosController.playSound(3);
                 return true;
             }
             

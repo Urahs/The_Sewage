@@ -15,8 +15,12 @@ public class MonsterNavMeshControl : MonoBehaviour
     public GameObject MainMenuCanvas;
     public GameObject scaryVideo;
     public CanvasController canvasController;
+    public AudiosController audiosController;
 
     public GameLogic gameLogic;
+    bool audioPlaying = false;
+
+    
 
     
     
@@ -59,7 +63,8 @@ public class MonsterNavMeshControl : MonoBehaviour
             //animator.Play("bite&up");
             //animator.Play("attack");
 
-            
+            audiosController.StopAudios(6);
+            audiosController.StopAudios(7);
             gameLogic.reloadLevel = true;
             PlayerPrefs.SetInt("restartScene", PlayerPrefs.GetInt("restartScene")+1);
             PlayerCanvas.SetActive(false);
@@ -105,9 +110,12 @@ public class MonsterNavMeshControl : MonoBehaviour
         //RUN TOWARD TO VICTIM
         if(howClose < ClosenessPercentageToAttack)
         {
+
             //Debug.Log("RUN");
             navMeshAgent.speed = runSpeed;
             animator.Play("run");
+            audiosController.StopAudios(7);
+            audiosController.playIfNotPlay(6);
             navMeshAgent.SetDestination(victimTarget.transform.position);
         }
         //KILL VICTIM
@@ -126,6 +134,8 @@ public class MonsterNavMeshControl : MonoBehaviour
         if(wanderTimeCounter >= wanderTime)
         {
             animator.Play("idle");
+            audiosController.StopAudios(6);
+            audiosController.playIfNotPlay(7);
             Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
             randomDirection += transform.position;
             NavMeshHit navMeshHit;

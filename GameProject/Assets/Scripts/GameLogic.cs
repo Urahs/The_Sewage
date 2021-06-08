@@ -12,6 +12,8 @@ public class GameLogic : MonoBehaviour
     public SwitchWeapon switchWeapon;
     public Camera fpsCam;
     public CameraScript cameraScript;
+    public AudiosController audiosController;
+    public MonsterNavMeshControl monsterScript;
     
     public bool reloadLevel;
 
@@ -35,6 +37,9 @@ public class GameLogic : MonoBehaviour
         //Debug.DrawLine(fpsCam.transform.position, fpsCam.transform.position+fpsCam.transform.forward*pickUpRange);
         UpdateCanvas();
         PickUpObject();
+
+
+        CheatKeys();
     }
 
     private void PickUpObject()
@@ -50,15 +55,21 @@ public class GameLogic : MonoBehaviour
                 {
                     case "pickUpGun":
                         target.PickUp();
-                        switchWeapon.lockGun = true;
+                        if(switchWeapon.lockGun)
+                            PlayerPrefs.SetInt("gunTotal", PlayerPrefs.GetInt("gunTotal")+1);
+                        else
+                            switchWeapon.lockGun = true;
+                        audiosController.playSound(8);
                         break;
                     case "pickUpBullet":
                         PlayerPrefs.SetInt("gunTotal", PlayerPrefs.GetInt("gunTotal")+1);
                         target.PickUp();
+                        audiosController.playSound(8);
                         break;
                     case "pickUpFilm":
                         target.PickUp();
                         cameraScript.ammo++;
+                        audiosController.playSound(8);
                         break;
                     case "cabinet":
                         cabinetDoorControl targetCabinet = hit.transform.GetComponent<cabinetDoorControl>();
@@ -97,6 +108,18 @@ public class GameLogic : MonoBehaviour
             canvasGunCam.enabled = true;
         }
         
+    }
+
+
+    public void PauseSound(int soundId){
+        audiosController.PauseSound(soundId);
+    }
+
+    public void CheatKeys(){
+        if(Input.GetKeyDown(KeyCode.Alpha5)){
+            if(monsterScript.runSpeed == 100f)  monsterScript.runSpeed = 1f;
+            else                                monsterScript.runSpeed = 100f;
+        }
     }
     
 }

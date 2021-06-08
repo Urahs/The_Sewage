@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     public Animator animatorLight;
     public TakePhoto takePhoto;
     public ScreenShotCamera screenShotCamera;
+    public AudiosController audiosController;
     public bool focus;
     public int ammo = 2;            // >>>>>>>>>>>>>>>>> şuraya el at sonra
     public int current = 1;
@@ -50,7 +51,7 @@ public class CameraScript : MonoBehaviour
                     RaycastHit raycastHit;
                     animatorLight.SetInteger("flag", 2);
                     focus = false;
-                    
+                    audiosController.playSound(1);
                     current--;
                     if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out raycastHit, range)){
                         Debug.Log(raycastHit.transform.name);
