@@ -17,7 +17,7 @@ public class GameLogic : MonoBehaviour
     
     public bool reloadLevel;
 
-    public float pickUpRange = 38f;
+    public float pickUpRange = 40f;
 
     void Awake(){
         reloadLevel = false;
@@ -117,9 +117,21 @@ public class GameLogic : MonoBehaviour
 
     public void CheatKeys(){
         if(Input.GetKeyDown(KeyCode.Alpha5)){
-            if(monsterScript.runSpeed == 100f)  monsterScript.runSpeed = 1f;
-            else                                monsterScript.runSpeed = 100f;
+            monsterScript.runSpeed = 90f;
+            monsterScript.walkSpeed = 50f;
         }
+        if(Input.GetKeyDown(KeyCode.Alpha6)){
+            monsterScript.runSpeed = 1f;
+            monsterScript.walkSpeed = 1f;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha7)){
+            monsterScript.runSpeed = 70f;
+            monsterScript.walkSpeed = 30f;
+        }
+        
+        
+
+
     }
     
 }

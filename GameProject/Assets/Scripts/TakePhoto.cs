@@ -92,10 +92,10 @@ public class TakePhoto : MonoBehaviour
                 pngFileName = Application.dataPath + "/Resources/photo" + i.ToString() + ".png";
             }
             else if(PlayerPrefs.GetInt("monsterDead") == 1){
-                pngFileName = "Assets/Snapshots/dead" + i.ToString() + ".png";
+                pngFileName = Application.dataPath + "/Resources/dead" + i.ToString() + ".png";
             }
             else{
-                pngFileName = "Assets/Snapshots/DefaultMonster.png";
+                pngFileName = Application.dataPath + "/Resources/DefaultMonster.png";
             }
             Texture2D tex = null;
             byte[] fileData;

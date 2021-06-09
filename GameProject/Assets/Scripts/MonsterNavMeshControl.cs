@@ -65,6 +65,8 @@ public class MonsterNavMeshControl : MonoBehaviour
 
             audiosController.StopAudios(6);
             audiosController.StopAudios(7);
+            audiosController.StopAudios(9);
+            audiosController.StopAudios(10);
             gameLogic.reloadLevel = true;
             PlayerPrefs.SetInt("restartScene", PlayerPrefs.GetInt("restartScene")+1);
             PlayerCanvas.SetActive(false);
