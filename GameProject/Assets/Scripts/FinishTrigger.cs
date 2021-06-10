@@ -55,7 +55,7 @@ public class FinishTrigger : MonoBehaviour
     }
 
     void Destroy_Create(){
-
+        PlayerPrefs.SetInt("restartScene", PlayerPrefs.GetInt("restartScene")+1);
         gameLogic.reloadLevel = true;
         audiosController.ShutDown();
         Cursor.lockState = CursorLockMode.None;
